@@ -24,15 +24,32 @@ export default async function handler(req, res) {
     }
   }
 
- if (req.method === "POST") {
+  if (req.method === "POST") {
     console.log("Body:", req.body);
     console.log("Formatted Body:", JSON.stringify(req.body, null, 2));
-    
-    // رد سريع بدون أي انتظار
-    return res.status(200).json({ message: "Received" });
+
+    const response = await fetch(
+      "http://167.71.38.197:6123/messenger/webhook",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(req.body),
+      }
+    );
+
+    if (!response.ok) {
+      console.error(
+        "Failed to forward webhook:",
+        response.status,
+        response.statusText
+      );
+      return res.status(500).send("Internal Server Error");
+    }
+
+    return res.status(200).send("OK");
   }
 
   return res.status(405).send("Method Not Allowed");
-
- 
 }
