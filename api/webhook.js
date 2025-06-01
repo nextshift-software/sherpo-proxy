@@ -29,8 +29,7 @@ export default async function handler(req, res) {
     console.log("Formatted Body:", JSON.stringify(req.body, null, 2));
 
     const response = await fetch(
-      "http://localhost:9000/messenger/webhook",
-      // "http://167.71.38.197:6123/messenger/webhook",
+      "http://167.71.38.197:6123/messenger/webhook",
       {
         method: "POST",
         headers: {
