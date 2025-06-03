@@ -27,25 +27,25 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     console.log("Body:", req.body);
     console.log("Formatted Body:", JSON.stringify(req.body, null, 2));
-
-    const response = await fetch(
-      "http://167.71.38.197:6123/messenger/webhook",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(req.body),
-      }
-    );
-    console.log("Response:", response);
-    if (!response.ok) {
-      console.error(
-        "Failed to forward webhook:",
-        response.status,
-        response.statusText
-      );
-      return res.status(500).send("Internal Server Error");
+    return res.status(200).json({ message: "Received" });
+    // const response = await fetch(
+    //   "http://167.71.38.197:6123/messenger/webhook",
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(req.body),
+    //   }
+    // );
+    // console.log("Response:", response);
+    // if (!response.ok) {
+    //   console.error(
+    //     "Failed to forward webhook:",
+    //     response.status,
+    //     response.statusText
+    //   );
+    //   return res.status(500).send("Internal Server Error");
     }
 
     return res.status(200).send("OK");
