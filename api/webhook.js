@@ -46,7 +46,7 @@ export default async function handler(req, res) {
     //     response.statusText
     //   );
     //   return res.status(500).send("Internal Server Error");
-    }
+    // }
 
     return res.status(200).send("OK");
   }
