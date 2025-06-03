@@ -27,7 +27,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     console.log("Body:", req.body);
     console.log("Formatted Body:", JSON.stringify(req.body, null, 2));
-    return res.status(200).json({ message: "Received" });
+    //return res.status(200).json({ message: "Received" });
     const response = await fetch(
       "http://167.71.38.197:6123/messenger/webhook",
       {
