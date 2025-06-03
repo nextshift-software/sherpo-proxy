@@ -38,7 +38,7 @@ export default async function handler(req, res) {
         body: JSON.stringify(req.body),
       }
     );
-
+    console.log("Response:", response);
     if (!response.ok) {
       console.error(
         "Failed to forward webhook:",
